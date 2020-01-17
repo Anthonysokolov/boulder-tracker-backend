@@ -21,7 +21,7 @@ const createLocalDatabase = require('./utilities/createLocalDatabase');
 const db = require('./database');
 
 // Our apiRouter;
-const apiRouter = require('./routes/index');
+//const apiRouter = require('./routes/index');
 
 // A helper function to sync our database;
 const syncDatabase = () => {
@@ -80,7 +80,7 @@ const configureApp = () => {
 // Main function declaration;
 const bootApp = async () => {
   await syncDatabase();
-  await configureApp();
+  //await configureApp();
 };
 
 // Main function invocation;
