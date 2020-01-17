@@ -13,7 +13,8 @@ const User = db.define("user",{
   },
   id:{
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
+    primaryKey: true
   }
 })
 

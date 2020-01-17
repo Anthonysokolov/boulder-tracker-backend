@@ -16,6 +16,11 @@ const Session = db.define("session",{
   },
   comments:{
     type: Sequelize.STRING
+  },
+  userID:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    foreignKey:true
   }
 })
 
