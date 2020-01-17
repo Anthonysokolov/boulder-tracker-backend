@@ -5,7 +5,7 @@ const config = {
   user: 'postgres',
   host: 'localhost',
   port: 5432,
-  password: process.env.LOCAL_DATABASE_PASSWORD
+  password: "test"//process.env.LOCAL_DATABASE_PASSWORD
 };
 
 // The name of the database to create;
