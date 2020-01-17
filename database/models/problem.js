@@ -13,11 +13,11 @@ const Problem = db.define("problem",{
     type: Sequelize.STRING
   },
   attempts:{
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   sends:{
-    type: Sequelize.STRING
+    type: Sequelize.INTEGER
   },
   comments:{
     type: Sequelize.STRING
