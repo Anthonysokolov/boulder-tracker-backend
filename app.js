@@ -47,6 +47,7 @@ const app = express();
 
 // A helper function to create our app with configurations and middleware;
 const configureApp = () => {
+  /*
   app.use(helmet());
   app.use(logger('dev'));
   app.use(express.json());
@@ -75,6 +76,7 @@ const configureApp = () => {
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
+  */
 };
 
 // Main function declaration;

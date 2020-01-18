@@ -10,11 +10,6 @@ const User = db.define("user",{
   password:{
     type: Sequelize.STRING,
     allowNull: false
-  },
-  id:{
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    primaryKey: true
   }
 })
 

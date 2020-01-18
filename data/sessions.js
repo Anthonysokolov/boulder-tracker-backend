@@ -1,31 +1,23 @@
 const sessions = [
   {
-    date: 2000-12-12,
-    time: 12:12:12,
+    date: Date(),
     location:"Steep Rock",
     comments:"Felt super energized",
-    userID:1
   },
   {
-    date: 2000-10-12,
-    time: 12:12:12,
+    date: Date(),
     location:"Metro Rock",
     comments:"Felt pretty energized",
-    userID:1
   },
   {
-    date: 2000-11-12,
-    time: 12:12:12,
+    date: Date(),
     location:"Brooklyn Boulders",
     comments:"",
-    userID:1
   },
   {
-    date: 2000-12-12,
-    time: 12:12:12,
+    date: Date(),
     location:"Steep Rock",
     comments:"Got tired fast today",
-    userID:1
   }
 ]
 
