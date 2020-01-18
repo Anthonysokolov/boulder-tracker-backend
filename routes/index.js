@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 const usersRouter = require('./users')
-//const sessionsRouter = require('./sessions')
+const sessionsRouter = require('./sessions')
 //const problemsRouter = require('./problems')
 
 router.use('/users',usersRouter)
-//router.use('/sessions',sessionsRouter)
+router.use('/sessions',sessionsRouter)
 //router.use('/problems',problemsRouter)
 
 // Error handling
