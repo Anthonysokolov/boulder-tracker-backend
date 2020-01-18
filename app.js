@@ -1,10 +1,11 @@
 // Here, we will sync our database, create our application, and export this module so that we can use it in the bin directory, where we will be able to establish a server to listen and handle requests and responses;
 
 // Require environmental variables (if we have any) if we are in development or testing;
-
-// if (process.env.NODE_ENV !== 'production') {
-//   require('./secrets');
-// }
+/*
+if (process.env.NODE_ENV !== 'production') {
+   require('./secrets');
+}
+*/
 
 // Module dependencies;
 const express = require('express');
@@ -21,7 +22,7 @@ const createLocalDatabase = require('./utilities/createLocalDatabase');
 const db = require('./database');
 
 // Our apiRouter;
-//const apiRouter = require('./routes/index');
+const apiRouter = require('./routes/index');
 
 // A helper function to sync our database;
 const syncDatabase = () => {
@@ -30,7 +31,7 @@ const syncDatabase = () => {
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
-    db.sync({ force: true })
+    db.sync()//{ force: true })
       .catch(err => {
         if (err.name === 'SequelizeConnectionError') {
           createLocalDatabase();
@@ -47,7 +48,6 @@ const app = express();
 
 // A helper function to create our app with configurations and middleware;
 const configureApp = () => {
-  /*
   app.use(helmet());
   app.use(logger('dev'));
   app.use(express.json());
@@ -76,13 +76,12 @@ const configureApp = () => {
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
-  */
 };
 
 // Main function declaration;
 const bootApp = async () => {
   await syncDatabase();
-  //await configureApp();
+  await configureApp();
 };
 
 // Main function invocation;

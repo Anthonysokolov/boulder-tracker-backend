@@ -4,10 +4,6 @@ const users = require('../data/users')
 const sessions = require('../data/sessions')
 const problems = require('../data/problems')
 
-User.sync()
-Session.sync()
-Problem.sync()
-
 const populateUsersTable = async (users) => {
   for(let i = 0; i < users.length; i++){
     let currentUser = await User.create(users[i])
