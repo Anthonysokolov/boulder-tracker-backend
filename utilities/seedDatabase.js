@@ -1,5 +1,11 @@
 const {User, Session, Problem} = require("../database/models")
 
+const syncTables = async () => {
+  await User.sync()
+  await Session.sync()
+  await Problem.sync()
+}
+
 const users = require('../data/users')
 const sessions = require('../data/sessions')
 const problems = require('../data/problems')
@@ -28,6 +34,7 @@ const populateProblemTable = async (problems) => {
 
 const seedDatabase = async () => {
   try {
+    await syncTables();
     await populateUsersTable(users);
     await populateSessionTable(sessions);
     await populateProblemTable(problems);
