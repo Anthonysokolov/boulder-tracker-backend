@@ -8,8 +8,14 @@ router.get('/', function(req, res, next){
     .catch(err => next(err))
 })
 
-router.get('/:id', function(req, res, next){
-  User.findByPk(req.params.id, {include:[{model:Session, include:[Problem]}]})
+router.get('/:id/', function(req, res, next){
+  User.findByPk(req.params.id)
+    .then(user => res.json(user))
+    .catch(next)
+})
+
+router.get('/:id/sessions', function(req, res, next){
+  Session.findAll({where:{userId:req.params.id},include:[Problem]})
     .then(user => res.json(user))
     .catch(next)
 })
