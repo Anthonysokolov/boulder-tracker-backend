@@ -11,18 +11,19 @@ router.get('/', function(req, res, next){
 router.get('/:id', function(req, res, next){
   Session.findByPk(req.params.id, {include:[Problem]})
     .then(session => res.json(session))
-    .catch(next)
+    .catch(err => res.status(404))
 })
 
 router.post('/add', function(req, res, next){
   Session.create({
     date:Date(),
-    location:req.body.location,
-    comments:req.body.comments,
-    userId:req.body.userId
+    location:req.query.location,//.location,
+    comments:req.query.comments,
+    userId:req.query.userId
   })
     .then(obj => res.send(obj))
     .catch(err => res.send(err))
 })
+
 
 module.exports = router
