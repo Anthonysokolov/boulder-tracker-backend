@@ -1,9 +1,9 @@
 const {User, Session, Problem} = require("../database/models")
 
 const syncTables = async () => {
-  await User.sync()
-  await Session.sync()
-  await Problem.sync()
+  await User.sync({force:true})
+  await Session.sync({force:true})
+  await Problem.sync({force:true})
 }
 
 const users = require('../data/users')

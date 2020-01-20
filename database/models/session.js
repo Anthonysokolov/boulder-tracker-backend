@@ -8,7 +8,6 @@ const Session = db.define("session",{
   },
   location:{
     type: Sequelize.STRING,
-    allowNull: false
   },
   comments:{
     type: Sequelize.STRING
