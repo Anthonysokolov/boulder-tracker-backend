@@ -17,9 +17,9 @@ router.get('/:id', function(req, res, next){
 router.post('/add', function(req, res, next){
   Session.create({
     date:Date(),
-    location:req.query.location,//.location,
-    comments:req.query.comments,
-    userId:req.query.userId
+    location:req.body.location,//.location,
+    comments:req.body.comments,
+    userId:req.body.userId
   })
     .then(obj => res.send(obj))
     .catch(err => res.send(err))
