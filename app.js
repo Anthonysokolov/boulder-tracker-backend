@@ -14,6 +14,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
+const session = require("express-session");
+const passport = require("passport");
 
 
 // Utilities;
@@ -21,6 +23,10 @@ const createLocalDatabase = require('./utilities/createLocalDatabase');
 
 // Our database instance;
 const db = require('./database');
+
+// Setup the storage for our sessions to connect with our database
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const sessionStore = new SequelizeStore({db: db});
 
 // Our apiRouter;
 const apiRouter = require('./routes/index');
@@ -47,6 +53,19 @@ const syncDatabase = () => {
 // Instantiate our express application;
 const app = express();
 
+// Define how the user is stored in the session
+passport.serializeUser(function(user, done) {return done(null, user.id);});
+// Define how the user is retrieved from the database given information from the session
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await db.models.User.findByPk(id);
+    done(null, user);
+  }
+  catch(err) {
+    done(err);
+  }
+});
+
 // A helper function to create our app with configurations and middleware;
 const configureApp = () => {
   app.use(helmet());
@@ -55,6 +74,14 @@ const configureApp = () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(compression());
   app.use(cookieParser());
+  app.use(session({
+    secret: "secret key",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false
+  }));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // Mount our apiRouter;
   app.use('/api', apiRouter);
