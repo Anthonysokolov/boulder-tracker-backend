@@ -30,12 +30,7 @@ const sessionStore = new SequelizeStore({db: db});
 
 // Our apiRouter;
 const apiRouter = require('./routes/index');
-const authRouter = require('./routes/auth/index');
-<<<<<<< HEAD
-=======
-
 const authRouter = require('./auth/index')
->>>>>>> master
 
 // A helper function to sync our database;
 const syncDatabase = () => {
@@ -91,15 +86,7 @@ const configureApp = () => {
 
   // Mount our apiRouter;
   app.use('/api', apiRouter);
-<<<<<<< HEAD
   app.use('/auth', authRouter);
-=======
-<<<<<<< HEAD
-  app.use('/auth', authRouter);
-=======
-  app.use('/auth',authRouter);
->>>>>>> auth
->>>>>>> master
 
   // Error handling;
   app.use((req, res, next) => {
