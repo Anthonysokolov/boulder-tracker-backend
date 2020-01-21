@@ -11,6 +11,9 @@ const Session = db.define("session",{
   },
   comments:{
     type: Sequelize.STRING
+  },
+  numClimbs:{
+    type:Sequelize.INTEGER
   }
 })
 
