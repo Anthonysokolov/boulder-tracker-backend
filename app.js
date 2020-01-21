@@ -25,6 +25,8 @@ const db = require('./database');
 // Our apiRouter;
 const apiRouter = require('./routes/index');
 
+const authRouter = require('./auth/index')
+
 // A helper function to sync our database;
 const syncDatabase = () => {
   if (process.env.NODE_ENV === 'production') {
@@ -58,6 +60,7 @@ const configureApp = () => {
 
   // Mount our apiRouter;
   app.use('/api', apiRouter);
+  app.use('/auth',authRouter);
 
   // Error handling;
   app.use((req, res, next) => {
