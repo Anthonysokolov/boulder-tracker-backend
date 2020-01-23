@@ -2,12 +2,12 @@ const sessions = [
   {
     date: Date(),
     location:"Steep Rock",
-    comments:"Felt super energized",
+    comments:"Early morning climb",
   },
   {
     date: Date(),
     location:"Metro Rock",
-    comments:"Felt pretty energized",
+    comments:"Felt very energized",
   },
   {
     date: Date(),
@@ -17,7 +17,7 @@ const sessions = [
   {
     date: Date(),
     location:"Steep Rock",
-    comments:"Got tired fast today",
+    comments:"Got tired pretty fast today",
   }
 ]
 
