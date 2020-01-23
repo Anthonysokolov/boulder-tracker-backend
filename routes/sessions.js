@@ -9,10 +9,12 @@ router.get('/', function(req, res, next){
 })
 
 router.get('/:id', function(req, res, next){
-  console.log(req.body)
   Session.findByPk(req.params.id, {include:[Problem]})
     .then(session => {
       session.numClimbs = session.problems.length
+      if(session.userId != req.user.id){
+        return res.status(404)
+      }
       return res.json(session)
     })
     .catch(err => res.status(404))
