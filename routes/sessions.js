@@ -29,8 +29,14 @@ router.get('/graph/:id', function(req, res, next){
     .then(problems => {
       for(let i = 0; i < problems.length; i++){
         let grade = problems[i].grade.slice(1)
-        out[grade].field1 += problems[i].sends
-        out[grade].field2 += problems[i].attempts
+        let sends = problems[i].sends
+        let attempts = problems[i].attempts
+        if(sends){
+          out[grade].field1 += problems[i].sends
+        }
+        if(attempts){
+          out[grade].field2 += problems[i].attempts
+        }
       }
       return res.json(out)
     })
