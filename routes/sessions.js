@@ -20,6 +20,23 @@ router.get('/:id', function(req, res, next){
     .catch(err => res.status(404))
 })
 
+router.get('/graph/:id', function(req, res, next){
+  let out = []
+  for(let i = 0; i < 10; i++){
+    out.push({model_name:"V"+i, field1:0, field2:0})
+  }
+  Problem.findAll({where:{sessionId:req.params.id}})
+    .then(problems => {
+      for(let i = 0; i < problems.length; i++){
+        let grade = problems[i].grade.slice(1)
+        out[grade].field1 += problems[i].sends
+        out[grade].field2 += problems[i].attempts
+      }
+      return res.json(out)
+    })
+    .catch(err => res.status(404))
+})
+
 
 router.post('/add', function(req, res, next){
   Session.create({
