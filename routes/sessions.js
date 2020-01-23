@@ -3,12 +3,13 @@ const router = express.Router()
 const {Session, Problem} = require('../database/models')
 
 router.get('/', function(req, res, next){
-  Session.findAll()
-    .then(sessions => res.status(200).json(sessions))
-    .catch(err => next(err))
+  Session.findAll({where:{userId:req.user.id},include:[Problem]})
+    .then(user => res.json(user))
+    .catch(next)
 })
 
 router.get('/:id', function(req, res, next){
+  console.log(req.body)
   Session.findByPk(req.params.id, {include:[Problem]})
     .then(session => {
       session.numClimbs = session.problems.length
@@ -17,12 +18,13 @@ router.get('/:id', function(req, res, next){
     .catch(err => res.status(404))
 })
 
+
 router.post('/add', function(req, res, next){
   Session.create({
     date:Date(),
     location:req.body.location,//.location,
     comments:req.body.comments,
-    userId:req.body.userId
+    userId:req.user.id
   })
     .then(obj => res.send(obj))
     .catch(err => res.send(err))

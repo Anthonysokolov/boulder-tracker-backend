@@ -59,7 +59,7 @@ passport.serializeUser(function(user, done) {return done(null, user.id);});
 // Define how the user is retrieved from the database given information from the session
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await db.models.User.findByPk(id);
+    const user = await db.models.user.findByPk(id);
     done(null, user);
   }
   catch(err) {
