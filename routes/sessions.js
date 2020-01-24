@@ -42,7 +42,7 @@ router.get('/graph/:id', function(req, res, next){
     })
     .catch(err => res.status(404))
 })
-
+/*
 router.get('/graph/', function(req, res, next){
   let out = []
   for(let i = 0; i < 10; i++){
@@ -69,7 +69,7 @@ router.get('/graph/', function(req, res, next){
     .catch(err => res.status(404))
 })
 
-
+*/
 
 router.post('/add', function(req, res, next){
   Session.create({
