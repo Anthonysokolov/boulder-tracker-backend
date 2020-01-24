@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./bin/www",
-    "seed": "node ./utilities/seedDatabase"
+    "seed": "node ./utilities/seedDatabase",
+    "deploy": "bash script/deploy"
   },
   "repository": {
     "type": "git",
